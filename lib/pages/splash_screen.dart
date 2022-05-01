@@ -9,7 +9,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  
+;
     return AnimatedSplashScreen(
       nextScreen: const CheckListPage(),
       splash: 'lib/assets/car_splashArt.png',
@@ -17,12 +17,7 @@ class SplashScreen extends StatelessWidget {
       duration:3000,
       centered: true,
       splashTransition: SplashTransition.slideTransition,
- 
-      //TODO adicionar a imagem do carrinho e a cor da pagina principal que sera preta
       //TODO adicionar uma cor de transição (provavelmente Rosa)
     );
   }
-}
-
-class PageTransitionType {
 }
