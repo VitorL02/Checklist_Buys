@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
       nextScreen: const CheckListPage(),
       splash: 'lib/assets/car_splashArt.png',
       backgroundColor: Colors.black,
-      duration:3000,
+      duration:2000,
       centered: true,
       splashTransition: SplashTransition.slideTransition,
       //TODO adicionar uma cor de transição (provavelmente Rosa)
