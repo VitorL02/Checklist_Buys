@@ -3,15 +3,22 @@
 
 import 'package:flutter/material.dart';
 
-class CheckListPage extends StatelessWidget {
+class CheckListPage extends StatefulWidget {
   const CheckListPage({Key? key}) : super(key: key);
 
+  @override
+  State<CheckListPage> createState() => _CheckListPageState();
+}
+
+class _CheckListPageState extends State<CheckListPage> {
+  bool isBuy = false;
+  TextEditingController buyTitleController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.all(25),
+          padding: EdgeInsets.all(15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -24,24 +31,45 @@ class CheckListPage extends StatelessWidget {
               ),
               Divider(),
               SizedBox(height: 20),
-              ListView.builder(
+              ListView.separated(
+                separatorBuilder: (context, index) => Divider(
+                  color: Colors.grey[800],
+                ),
                 shrinkWrap: true,
                 itemCount: 5,
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    leading: Container(
-                        height: 30,
-                        width: 30,
-                        decoration: BoxDecoration(
-                            color: Theme.of(context).primaryColor,
-                            shape: BoxShape.circle),
-                        child: Icon(Icons.check, color: Colors.white)),
-                    title: Text(
-                      'Titulo da Compra',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.grey[200]),
+                  return Dismissible(
+                    key: Key(index.toString()),
+                    background: Container(
+                        padding: EdgeInsets.only(left: 20),
+                        alignment: Alignment.centerLeft,
+                        child: Icon(Icons.delete),
+                        color: Colors.red),
+                    onDismissed: (direction) {
+                      print('removida');
+                    },
+                    child: ListTile(
+                      onTap: () {
+                        setState(() {
+                          isBuy = !isBuy;
+                        });
+                      },
+                      leading: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColor,
+                              shape: BoxShape.circle),
+                          child: isBuy
+                              ? Icon(Icons.check, color: Colors.white)
+                              : Container()),
+                      title: Text(
+                        'Titulo da Compra',
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.grey[200]),
+                      ),
                     ),
                   );
                 },
@@ -81,6 +109,7 @@ class CheckListPage extends StatelessWidget {
                 children: [
                   Divider(),
                   TextFormField(
+                    controller: buyTitleController,
                     style: TextStyle(
                         fontSize: 18, color: Colors.white, height: 1.5),
                     autofocus: true,
@@ -89,7 +118,7 @@ class CheckListPage extends StatelessWidget {
                       hintStyle: TextStyle(color: Colors.white70),
                     ),
                   ),
-                  SizedBox(height: 70),
+                  SizedBox(height: 50),
                   // ignore: deprecated_member_use
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
@@ -98,7 +127,12 @@ class CheckListPage extends StatelessWidget {
                     child: FlatButton(
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20)),
-                      onPressed: () {},
+                      onPressed: () {
+                        if (buyTitleController.text.isNotEmpty) {
+                          Navigator.pop(context);
+                          buyTitleController.text = '';
+                        }
+                      },
                       child: Text('Adicionar'),
                       color: Theme.of(context).primaryColor,
                       textColor: Colors.white,
