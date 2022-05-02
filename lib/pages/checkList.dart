@@ -1,5 +1,5 @@
 // ignore: file_names
-// ignore_for_file: file_names, duplicate_ignore, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
+// ignore_for_file: file_names, duplicate_ignore, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace,
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +40,7 @@ class _CheckListPageState extends State<CheckListPage> {
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    key: Key(index.toString()),
+                    key: UniqueKey(),
                     background: Container(
                         padding: EdgeInsets.only(left: 20),
                         alignment: Alignment.centerLeft,
@@ -49,6 +49,13 @@ class _CheckListPageState extends State<CheckListPage> {
                     onDismissed: (direction) {
                       print('removida');
                       //TODO adicionar uma snack bar confirmando a remoção da compra
+                      Get.snackbar(
+                        'Compra Deletada',
+                        'Sua compra foi deletada com sucesso',
+                        backgroundColor: Colors.green,
+                        icon: Icon(Icons.delete, color: Colors.white),
+                        colorText: Colors.white,
+                      );
                     },
                     child: ListTile(
                       onTap: () {
@@ -80,8 +87,9 @@ class _CheckListPageState extends State<CheckListPage> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
       floatingActionButton: FloatingActionButton(
+          elevation: 10,
           onPressed: () {
             showDialog(
               context: context,

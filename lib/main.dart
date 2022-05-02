@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'pages/splash_screen.dart';
 
 void main() {
@@ -10,16 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.grey[900],
         primarySwatch: Colors.pink,
-        
       ),
       home: const SplashScreen(),
     );
   }
 }
-
