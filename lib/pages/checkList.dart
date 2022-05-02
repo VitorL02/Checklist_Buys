@@ -47,8 +47,6 @@ class _CheckListPageState extends State<CheckListPage> {
                         child: Icon(Icons.delete),
                         color: Colors.red),
                     onDismissed: (direction) {
-                      print('removida');
-                      //TODO adicionar uma snack bar confirmando a remoção da compra
                       Get.snackbar(
                         'Compra Deletada',
                         'Sua compra foi deletada com sucesso',
@@ -87,7 +85,7 @@ class _CheckListPageState extends State<CheckListPage> {
           ),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
           elevation: 10,
           onPressed: () {
