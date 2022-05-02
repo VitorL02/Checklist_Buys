@@ -2,6 +2,7 @@
 // ignore_for_file: file_names, duplicate_ignore, prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CheckListPage extends StatefulWidget {
   const CheckListPage({Key? key}) : super(key: key);
@@ -47,6 +48,7 @@ class _CheckListPageState extends State<CheckListPage> {
                         color: Colors.red),
                     onDismissed: (direction) {
                       print('removida');
+                      //TODO adicionar uma snack bar confirmando a remoção da compra
                     },
                     child: ListTile(
                       onTap: () {
