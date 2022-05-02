@@ -40,7 +40,7 @@ class _CheckListPageState extends State<CheckListPage> {
                 itemCount: 5,
                 itemBuilder: (context, index) {
                   return Dismissible(
-                    key: UniqueKey(),
+                    key: Key(index.toString()),
                     background: Container(
                         padding: EdgeInsets.only(left: 20),
                         alignment: Alignment.centerLeft,
