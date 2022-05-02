@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         }
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'Flutter Demo',
+          title: 'Check List de Compras',
           theme: ThemeData(
             scaffoldBackgroundColor: Colors.grey[900],
             primarySwatch: Colors.pink,
