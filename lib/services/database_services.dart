@@ -1,8 +1,6 @@
 //TODO fazer os services de comunicação com banco de dados
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
-
 import '../model/buy.dart';
 
 class DatabaseServices {
@@ -18,6 +16,10 @@ class DatabaseServices {
 
   Future completeBuy(uuid) async {
     return await checkListCollection.doc(uuid).update({"isBuy": true});
+  }
+
+  Future deleteBuy(uuid) async {
+    return await checkListCollection.doc(uuid).delete();
   }
 
   List<Buy> buysFromFirestore(QuerySnapshot snapshot) {
