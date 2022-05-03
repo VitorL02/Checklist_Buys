@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'pages/splash_screen.dart';
-import 'widgets/loading.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,8 +23,10 @@ class MyApp extends StatelessWidget {
           );
         }
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Loading();
+          return const Center(
+              child: CircularProgressIndicator(color: Colors.pink));
         }
+
         return GetMaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Check List de Compras',

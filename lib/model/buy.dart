@@ -3,5 +3,5 @@ class Buy {
   String title;
   bool isBuy;
 
-  Buy(this.uuid, this.isBuy, this.title);
+  Buy({required this.uuid, required this.isBuy, required this.title});
 }
