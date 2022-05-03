@@ -52,7 +52,7 @@ class _CheckListPageState extends State<CheckListPage> {
                       itemCount: buys!.length,
                       itemBuilder: (context, index) {
                         return Dismissible(
-                          key: Key(buys![index].title),
+                          key: Key(buys[index].title),
                           background: Container(
                               padding: EdgeInsets.only(left: 20),
                               alignment: Alignment.centerLeft,
